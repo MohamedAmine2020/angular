@@ -1,0 +1,92 @@
+<div class="page-layout carded fullwidth inner-scroll" id="product">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <button (click)="navigateToProfile()" class="mr-0 mr-sm-16" mat-icon-button>
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+
+                <div [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}" fxLayout="column"
+                     fxLayoutAlign="start start">
+                    <div class="h2">
+                        {{'worker-profile.profile-edit.edit-profile'| translate}}
+                    </div>
+
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content">
+
+
+                <mat-tab-group>
+
+                    <mat-tab label="Information Professionelle">
+                        <div class="tab-content p-24" fusePerfectScrollbar>
+                            <worker-professional-information-form
+                                (formStatusChanged)="professionalInformationChanged($event)"
+                                [value]="professionalInformation">
+                            </worker-professional-information-form>
+                            <div (click)="saveProfessionalInformation()" class="pl-16" fxLayout="row"
+                                 fxLayoutAlign="end center">
+                                <button [disabled]="!isProfessionalInformationFormValid" color="accent"
+                                        mat-raised-button>{{ 'shared.button.save' | translate | uppercase }}</button>
+                            </div>
+
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="Documents d'identité">
+                        <div class="tab-content p-24" fusePerfectScrollbar>
+                            <worker-identity-document-form (formStatusChanged)="identityDocumentChanged($event)"
+                                                           [value]="identityDocument"></worker-identity-document-form>
+                            <div (click)="saveIdentityDocument()" class="pl-16" fxLayout="row"
+                                 fxLayoutAlign="end center">
+                                <button [disabled]="!isIdentityDocumentFormValid" color="accent"
+                                        mat-raised-button>{{ 'shared.button.save' | translate | uppercase }}</button>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="Services">
+                        <div class="tab-content p-24" fusePerfectScrollbar>
+                            <worker-services (servicesChanged)="serviceChanged($event)" [readOnly]="false"
+                                             [value]="services"></worker-services>
+                            <div  class="pl-16" fxLayout="row" fxLayoutAlign="end end">
+                                <button  (click)="saveServices()" [disabled]="!isServicesFormValid" color="accent"
+                                        mat-raised-button>Save</button>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                </mat-tab-group>
+
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

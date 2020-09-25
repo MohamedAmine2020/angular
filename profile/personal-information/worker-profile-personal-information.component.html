@@ -1,0 +1,34 @@
+<fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxFlex="100" fxLayout="row">
+    <!-- Front -->
+    <div class="fuse-widget-front">
+        <div class="px-16 border-bottom" fxLayout="row wrap"
+             fxLayoutAlign="space-between center">
+            <div class="py-16 h3" fxFlex>{{'shared.account.personal-information'| translate}}</div>
+        </div>
+
+        <div class="p-16 pt-4">
+            <div class="mb-12" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="mr-16">
+                    <mat-icon class="s-16">person_outline</mat-icon>
+                    {{'shared.account.gender'| translate}}
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="secondary-text"> {{personalInformation.gender?.label | translate}}</div>
+                </div>
+            </div>
+
+            <div class="mb-12" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="mr-16">
+                    <mat-icon class="s-16">cake</mat-icon>
+                   {{'shared.account.date-of-birth'| translate}}
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="secondary-text">{{personalInformation.birthday}}</div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</fuse-widget>

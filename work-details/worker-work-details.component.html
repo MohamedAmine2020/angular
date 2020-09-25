@@ -1,0 +1,130 @@
+<div class="page-layout carded fullwidth " id="work-details">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <button (click)="navigateToDashboard()" [routerLink]="" class="mr-0 mr-sm-16" mat-icon-button>
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
+
+                <div [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}" class="product-image mr-8 mr-sm-16">
+                    <img [alt]="work.service.label" [src]="work.service.imageUrl | cloudfrontimage">
+                </div>
+
+                <div [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}" fxLayout="column"
+                     fxLayoutAlign="start start">
+                    <div class="h2">
+                        {{work.title}}
+                    </div>
+                    <div class="subtitle secondary-text">
+                        <span> {{work.service.label}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <div fusePerfectScrollbar>
+                <!-- CONTENT -->
+                <div *ngIf="!work.isCanceled" class="content" fxFlex fxLayout="column">
+                    <work-status-stepper *ngIf="isWorkerAcceptedWork()" [work]="work"
+                                         fxHide.lt-md></work-status-stepper>
+                    <div class="p-12" fxLayout="column" fxLayout.gt-sm="row"
+                         fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+
+                        <div fxFlex="100" fxFlex.gt-sm="50">
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column">
+                                <!-- WORK DETAILS -->
+                                <div class="fuse-widget-front">
+                                    <div class="px-16 py-8 border-bottom" fxLayout="row"
+                                         fxLayoutAlign="space-between center">
+                                        <div class="h3 py-16">{{'worker-work-details.subtitle'| translate}}</div>
+                                    </div>
+                                    <div class="p-16" fxLayout="column">
+                                        <div fxLayout="row wrap" fxLayoutAlign="start start">
+                                            <work-details [work]="work"></work-details>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /WORK DETAILS -->
+                            </fuse-widget>
+                        </div>
+
+                        <div fxFlex="100" fxFlex.gt-sm="50">
+                            <work-offered-to-other-worker
+                                *ngIf="this.work.isAfterOffered && !isWorkerAcceptedWork()"></work-offered-to-other-worker>
+                            <worker-work-paid-info *ngIf="paidContract || reviewedContract || closedContract"
+                                                   [contract]="paidContract || reviewedContract || closedContract">
+                            </worker-work-paid-info>
+                            <approve-work-form *ngIf="offerApprovedContract || offeredContract || startedContract"
+                                               [contract]="startedContract"
+                                               [work]="work">
+                            </approve-work-form>
+                            <worker-work-apply-form></worker-work-apply-form>
+                            <wait-client-approve-work-done *ngIf="doneContract"
+                                                           [contract]="doneContract"></wait-client-approve-work-done>
+                            <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column">
+                                <!-- Front -->
+                                <div class="fuse-widget-front">
+                                    <div class="px-16 py-8 border-bottom" fxLayout="row"
+                                         fxLayoutAlign="space-between center">
+                                        <div class="h3 py-16"> {{'worker-work-details.worker-offer-service'| translate}}</div>
+                                    </div>
+                                    <div fxLayout="row">
+                                        <work-worker-list
+                                            [work]="work"
+                                            [worksContracts]="worksContracts"
+                                            fusePerfectScrollbar fxFlex>
+                                        </work-worker-list>
+                                    </div>
+                                </div>
+                                <!-- / Front -->
+                            </fuse-widget>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- / CONTENT -->
+
+                <div *ngIf="work.isCanceled " fxFlex fxLayout="column" fxLayoutAlign="center center">
+                    <mat-icon
+                        [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}"
+                        class="s-128 mb-16 select-message-icon hint-text">
+                        work_off
+                    </mat-icon>
+                    <span class="select-message-text hint-text">
+                    <span> {{'worker-work-details.service-deleted'| translate}}</span>
+                </span>
+                </div>
+
+                <div *ngIf="work.isInterrupted" fxFlex fxLayout="column" fxLayoutAlign="center center">
+                    <mat-icon
+                        [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}"
+                        class="s-128 mb-16 select-message-icon hint-text">
+                        work_off
+                    </mat-icon>
+                    <span class="select-message-text hint-text">
+                    <span> {{'worker-work-details.service-deleted-by-wijaa'| translate}}</span>
+                </span>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

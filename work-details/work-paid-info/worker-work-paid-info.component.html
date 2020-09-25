@@ -1,0 +1,28 @@
+<div id="work-paid-info">
+
+    <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}"
+                 class="widget " fxLayout="column">
+        <div class="fuse-card full-width">
+            <div class="p-16">
+                <div class="h3" fxLayout="row">
+                    <mat-icon class="s-24 mr-8">done_all</mat-icon>
+                   {{'worker-work-paid-info.finished-service'| translate}}
+                </div>
+                <div class="h4 mt-8">{{'worker-work-paid-info.transaction-done'| translate}}
+                </div>
+                <div class="h4 mt-8">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="mr-4">access_time</mat-icon>
+                        <span>{{'worker-work-paid-info.hours'| translate}}<span
+                            class="green-fg">{{payment?.workedHours | hoursMinutes}}</span></span>
+
+                        <mat-icon class="ml-16 mr-4 ">money</mat-icon>
+                        <span>{{'worker-work-paid-info.transaction-amount'| translate}} <span
+                            class="green-fg">{{payment?.workerRemuneration}}
+                            $&nbsp;</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fuse-widget>
+</div>

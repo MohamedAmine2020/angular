@@ -1,0 +1,60 @@
+<div id="work-apply-form" >
+
+    <fuse-widget *ngIf="contract && contract?.paymentData?.workedHoursNumber === null"
+                 [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxLayout="column">
+        <!-- Front -->
+        <div class="fuse-widget-front">
+            <div class="px-16 py-8 border-bottom" fxLayout="row"
+                 fxLayoutAlign="space-between center">
+                <div class="h3 py-16" fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="mr-4">done_all</mat-icon>
+                    <span>{{'approve-work.form.finished-work' | translate}}</span>
+                </div>
+            </div>
+            <div fxLayout="row">
+                
+                <form [formGroup]="form"
+                      class="apply-form p-16"
+                      fxLayout.gt-md="column" fxLayout.lt-md="column" fxLayoutAlign.gt-md="start center">
+                      <div fxLayout="row" fxLayout.lt-lg="column">
+                      <mat-form-field appearance="outline" fxFlex>
+                        <mat-label>Code postal</mat-label>
+                        <mat-icon class="secondary-text" matSuffix>timeline</mat-icon>
+                        <input formControlName="postalCode"  matInput name="postalCode"
+                               type="text">
+                     </mat-form-field>
+                    &nbsp;
+                    <mat-form-field appearance="outline" class="mr-16" fxFlex.gt-md="30">
+                        <mat-label>{{'approve-work.form.hours' | translate}}</mat-label>
+                        <input formControlName="workedHoursNumber" mask="90" matInput type="numeric">
+                        <span matSuffix>h</span>
+                        <mat-error *ngIf="form.get('workedHoursNumber').hasError('required')">
+                           {{'approve-work.form.label' | translate}}
+                        </mat-error>
+                        <mat-error *ngIf="form.get('workedHoursNumber').hasError('min')">
+                            Nombre minimal d'heures permis est 1
+                        </mat-error>
+                    </mat-form-field>
+                    </div>
+                    <mat-form-field appearance="outline" class="mr-8" fxFlex.gt-md="30">
+                        <mat-select formControlName="workedMinutesNumber">
+                            <mat-option *ngFor="let mm of minutes" [value]="mm.value">
+                                {{mm.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                   
+                    <button (click)="approve()"  [disabled]="form.invalid"  class="mat-accent" fxFlex.gt-md="30" 
+                            mat-raised-button ngClass.lt-md="mt-16">
+                        {{'shared.button.submit' | translate }}
+                    </button>
+                
+
+                </form>
+            </div>
+        </div>
+        <!-- / Front -->
+
+    </fuse-widget>
+
+</div>

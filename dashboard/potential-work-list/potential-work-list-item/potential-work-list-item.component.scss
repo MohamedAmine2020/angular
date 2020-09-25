@@ -1,0 +1,106 @@
+@import 'src/@fuse/scss/fuse';
+
+worker-potential-work-list-item {
+    flex-shrink: 0;
+    position: relative;
+    padding: 16px 24px;
+    border-bottom: 1px solid;
+
+    &.unread {
+
+        .info {
+
+            .name {
+                font-weight: 700;
+            }
+
+            .row-2 {
+
+                .subject {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    .info {
+        overflow: hidden;
+        width: 0;
+        position: relative;
+
+        .row-1 {
+            margin-bottom: 8px;
+
+
+            .title {
+                font-size: 15px;
+                font-weight: 600;
+            }
+
+            .name {
+                .avatar {
+                    min-width: 48px;
+                    width: 48px;
+                    height: 48px;
+                    line-height: 48px;
+                }
+            }
+
+            .actions {
+                margin-left: 0px;
+
+                .mat-icon-button {
+                    width: 32px;
+                    height: 32px;
+                    line-height: 1;
+                }
+            }
+        }
+
+        .row-2 {
+            margin-bottom: 8px;
+
+            .subject,
+            .message {
+                width: 100%;
+            }
+
+            .message {
+                position: relative;
+            }
+
+
+        }
+
+        .labels {
+            margin-top: 8px;
+
+            .label {
+                font-size: 11px;
+                border-radius: 4px;
+                margin: 0 4px 0 0;
+                padding: 3px 8px;
+
+                .label-color {
+                    width: 8px;
+                    height: 8px;
+                    margin-right: 8px;
+                    border-radius: 50%;
+                    background-color: accent;
+                }
+            }
+        }
+
+        .buttons {
+
+            .is-starred {
+                margin: 0 0 0 16px;
+            }
+
+            .is-important {
+                margin: 0;
+            }
+        }
+
+    }
+}

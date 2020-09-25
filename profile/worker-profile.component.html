@@ -1,0 +1,59 @@
+<div class="page-layout simple tabbed" id="worker-profile">
+
+    <!-- HEADER -->
+    <div class="header p-24" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center"
+         fxLayoutAlign.gt-sm="space-between end">
+        <div class="user-info" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center"
+             fxLayoutAlign.gt-sm="start center">
+            <img [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}" [src]="personalInformation.image"
+                 class="profile-image avatar huge">
+            <div [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}" class="name">
+                {{personalInformation.firstName}} {{personalInformation.lastName}}
+                <br>
+                <star-rating [rating]="reviewRatingAvg" [starType]="'svg'" readOnly="true"
+                             staticColor="ok"></star-rating>
+            </div>
+        </div>
+
+
+        <div [@animate]="{value:'*',params:{delay:'200ms'}}" class="actions" fxLayout="row" fxLayoutAlign="end center">
+            <button (click)="navigateToWorkerUpdate()" aria-label="Follow" color="accent" mat-raised-button>{{'worker-profile.edit'| translate}}
+            </button>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-12" fxLayout="row wrap">
+
+        <div class="about-content" fxFlex="100" fxFlex.gt-md="57" fxFlex.gt-sm="50" fxLayout="column">
+            <worker-services [value]="services" readOnly="true"></worker-services>
+        </div>
+
+        <div class="about-sidebar" fxFlex="100" fxFlex.gt-md="43" fxFlex.gt-sm="50" fxLayout="column">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+                <disable-account></disable-account>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+                <worker-profile-about-me></worker-profile-about-me>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+                <worker-profile-reviews></worker-profile-reviews>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+                <worker-profile-work-preference></worker-profile-work-preference>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start" fxLayoutAlign.gt-sm="start start">
+                <worker-profile-personal-information></worker-profile-personal-information>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+>

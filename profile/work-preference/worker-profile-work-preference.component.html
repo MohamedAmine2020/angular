@@ -1,0 +1,50 @@
+<fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxFlex="100" fxLayout="row">
+    <!-- Front -->
+    <div class="fuse-widget-front">
+        <div class="px-16 border-bottom" fxLayout="row wrap"
+             fxLayoutAlign="space-between center">
+            <div class="py-16 h3" fxFlex>{{'worker-profile.work-preference.title' | translate}}</div>
+        </div>
+
+        <div class="p-16 pt-4">
+            <div class="mb-12" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="mr-16">
+                    <mat-icon class="s-16">location_on</mat-icon>
+                    {{'worker-profile.work-preference.address' | translate}}
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="secondary-text"> {{professionalInformation.workZone.address.description}}</div>
+                </div>
+
+            </div>
+
+            <div class="mb-12" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="mr-16">
+                    <mat-icon class="s-16">transfer_within_a_station</mat-icon>
+                  {{'worker-profile.work-preference.distance' | translate}}
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="secondary-text"> {{professionalInformation.workZone.travelDistance}} <span> Km</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mb-12" fxLayout="row" fxLayoutAlign="space-between center">
+
+
+                <div class="mr-16">
+                    <mat-icon class="s-16">commute</mat-icon>
+                    {{'worker-profile.work-preference.transport' | translate}}
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div class="secondary-text">  {{professionalInformation.transportMeans.label | translate}}</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</fuse-widget>

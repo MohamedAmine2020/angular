@@ -1,0 +1,75 @@
+<div class="page-layout simple right-sidebar" fxLayout="row" id="dashboard-project">
+
+    <!-- CENTER -->
+    <div class="center" fusePerfectScrollbar>
+
+        <!-- HEADER -->
+        <div class="header accent p-24 pb-0" fxLayout="column" fxLayoutAlign="space-between">
+
+            <div fxLayout="row" fxLayoutAlign="space-between start">
+
+                <span [@animate]="{value:'*',params:{x:'50px'}}"
+                      class="mat-display-1 my-0 my-sm-24 welcome-message">{{account?.firstName}} {{account?.lastName}}
+                </span>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div *ngIf="identity.identityStatus.code === NOT_VERIFIED" class="content">
+            <div *fuseIfOnDom [@animateStagger]="{value:'50'}" class="widget-group" fxFlex="100"
+                 fxLayout="row wrap">
+                <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxFlex="100"
+                             fxLayout="column">
+                    <div class="fuse-card full-width welcome-card">
+                        <div class="p-16">
+                            <div class="h2" fxLayout="row">
+                                <mat-icon class="s-24 mr-8">info</mat-icon>
+                                {{'worker-dashboard.title' | translate}}
+                            </div>
+                            <hr>
+                            <div class="h4">
+                                {{'worker-dashboard.messages.message-1' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </fuse-widget>
+            </div>
+        </div>
+        <div class="content">
+            <div *fuseIfOnDom [@animateStagger]="{value:'50'}" class="widget-group p-12" fxFlex="100"
+                 fxLayout="row wrap">
+
+                <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxFlex="100"
+                             fxFlex.gt-sm="50" fxLayout="column">
+                    <div class="fuse-widget-front">
+                        <div class="px-16 py-8 border-bottom" fxLayout="row"
+                             fxLayoutAlign="space-between center">
+                            <div class="h3 py-16">{{'worker-dashboard.messages.service' | translate}}</div>
+                        </div>
+                        <div fxLayout="row">
+                            <worker-work-list fusePerfectScrollbar fxFlex></worker-work-list>
+                        </div>
+                    </div>
+                </fuse-widget>
+
+                <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxFlex="100"
+                             fxFlex.gt-sm="50" fxLayout="column">
+                    <div class="fuse-widget-front">
+                        <div class="px-16 py-8 border-bottom" fxLayout="row"
+                             fxLayoutAlign="space-between center">
+                            <div class="h3 py-16">{{'worker-dashboard.messages.message-2' | translate}}</div>
+                        </div>
+                        <div fxLayout="row">
+                            <worker-potential-work-list fusePerfectScrollbar fxFlex></worker-potential-work-list>
+                        </div>
+                    </div>
+                </fuse-widget>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

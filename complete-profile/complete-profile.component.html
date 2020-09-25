@@ -1,0 +1,68 @@
+<div id="main">
+    
+<div class="page-layout simple left-sidebar inner-scroll" id="academy-course">
+    <div class="center">
+        <div class="subtitle" fxLayout="row" fxLayoutAlign="center center">
+            <div>
+            </div>
+        </div>
+
+        <div class="content" >
+            <ng-container *ngFor="let step of completeProfileSteps.asArray(); let i = index;">
+                <div *ngIf="currentStepIndex === i" [@slideIn]="animationDirection" class="course-step"
+                     fusePerfectScrollbar>
+                    <div class="course-step-content" id="course-step-content">
+                        <div class="p-16">
+                            <h1> {{'worker-complete-profile.subtitle' | translate}}</h1>
+                        </div>
+                        <div class="p-16">
+                            <div class="h2 font-weight-300"><B>{{currentStepIndex + 1}} / {{'worker-complete-profile.personel' | translate}}</B></div>
+                        </div>
+
+                        <worker-personal-information-form (formStatusChanged)="personalInformationChanged($event)"
+                                                          *ngIf="currentStepIndex === 0"
+                                                          [value]="completeProfileSteps.personalInformationStep.data">
+                        </worker-personal-information-form>
+                        <div class="p-16">
+                            <div class="h2 font-weight-300"><B>{{currentStepIndex + 2}} / {{'worker-complete-profile.professionel' | translate}}</B></div>
+                        </div>
+                        <worker-professional-information-form
+                            (formStatusChanged)="professionalInformationChanged($event)"
+                            *ngIf="currentStepIndex === 0"
+                            [value]="completeProfileSteps.professionalInformationStep.data">
+                        </worker-professional-information-form>
+                        <div class="p-16">
+                            <div class="h2 font-weight-300"><B>{{currentStepIndex + 3}} / {{'worker-complete-profile.services' | translate}}</B></div>
+                        </div>
+
+
+                        <!--  <worker-identity-document-form (formStatusChanged)="identityDocumentChanged($event)"
+                                                         *ngIf="currentStepIndex === 2"
+                                                         [value]="completeProfileSteps.identityDocumentStep.data">
+                          </worker-identity-document-form>!-->
+
+
+                        <worker-services (servicesChanged)="serviceChanged($event)"
+                                         *ngIf="currentStepIndex === 0"
+                                         [value]="completeProfileSteps.servicesStep.data">
+                        </worker-services>
+
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+
+
+        <div class="step-navigation">
+            <button *ngIf="isValid()"
+                (click)="completeProfile()"
+                class="done green-600"
+                mat-button>
+                {{'client-complete-profile.title' | translate}}
+            </button>
+
+        </div>
+    </div>
+</div>
+</div>
+

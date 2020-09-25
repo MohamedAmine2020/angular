@@ -1,0 +1,22 @@
+<div id="wait-client-approve-work-done">
+    <fuse-widget [@animate]="{value:'*',params:{y:'100%'}}"
+                 class="widget " fxLayout="column">
+        <div class="fuse-card full-width">
+            <div class="p-16">
+                <div class="h3" fxLayout="row">
+                    <mat-icon class="s-24 mr-8">info</mat-icon>
+                  {{'work-done.finished-work-declaration'| translate}}
+                </div>
+                <div class="m-8 h4 secondary-text">{{'work-done.validation'| translate}}
+                </div>
+                <div *ngIf="contract.paymentData.workedHoursNumberChangeMessage"
+                     class="m-16 h4 secondary-text italic" fxLayout="row">
+                    <i [matTooltipPosition]="'above'"
+                       class="material-icons mr-8"
+                       matTooltip="Votre commentaire suite au changement du nombre d'heures travaillées">{{'work-done.comment'| translate}}</i>{{contract.paymentData.workedHoursNumberChangeMessage}}
+                </div>
+            </div>
+        </div>
+    </fuse-widget>
+
+</div>

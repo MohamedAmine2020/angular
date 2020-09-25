@@ -1,0 +1,63 @@
+@mixin dashboards-project-theme($theme) {
+
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $accent: map-get($theme, accent);
+    $is-dark: map-get($theme, is-dark);
+
+    worker-potential-work-list, worker-work-list {
+        border-right-color: map-get($foreground, divider);
+    }
+
+    worker-potential-work-list-item, worker-work-list-item {
+        border-bottom-color: map-get($foreground, divider);
+
+
+        .time {
+            color: map-get($foreground, secondary-text);
+        }
+
+        &.current-mail {
+            background: map-get($background, hover);
+        }
+
+        &.selected {
+            @if ($is-dark) {
+                background: map-get($background, background);
+            } @else {
+                background: map-get($accent, 50);
+            }
+
+
+        }
+
+        .labels {
+            @if ($is-dark) {
+                background: map-get($background, background);
+            } @else {
+                background: map-get($accent, 50);
+            }
+
+            .label-color {
+                background-color: map-get($accent, 200);
+            }
+        }
+
+        .info {
+
+            .row-2 {
+                color: map-get($foreground, secondary-text);
+
+                .labels {
+
+                    .label {
+                        background-color: rgba(0, 0, 0, 0.08);
+                    }
+                }
+            }
+        }
+    }
+
+
+}

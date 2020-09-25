@@ -1,0 +1,63 @@
+@import "src/@fuse/scss/fuse";
+@import "../../../../../node_modules/css-star-rating/scss/star-rating";
+
+#work-details {
+
+    .fuse-card {
+        max-width: 1000px !important;
+    }
+
+    .header {
+        .subtitle {
+            margin: 6px 0 0 0;
+        }
+
+        .product-image {
+            overflow: hidden;
+            width: 76px;
+            min-width: 76px;
+            max-width: 76px;
+            height: 76px;
+            min-height: 76px;
+            max-height: 76px;
+            border-radius: 4px;
+
+            img {
+                height: 100%;
+                width: auto;
+                max-width: none;
+            }
+        }
+    }
+
+    .content {
+
+        .mat-tab-group,
+        .mat-tab-body-wrapper,
+        .tab-content {
+            flex: 1 1 auto;
+            max-width: 100%;
+        }
+
+        .mat-horizontal-stepper-header {
+            pointer-events: none !important;
+        }
+
+        .mat-step-icon-state-done {
+            background-color: green;
+            color: white;
+        }
+
+        .label {
+            min-width: 110px;
+        }
+
+        .button-row .mat-raised-button {
+            margin-right: 8px;
+        }
+
+    }
+
+
+}
+

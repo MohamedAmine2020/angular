@@ -1,0 +1,28 @@
+<div class="dialog-content-wrapper">
+
+    <mat-toolbar class="mat-accent m-0" matDialogTitle>
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+                <span class="title dialog-title">{{'worker-identity-document.label'| translate}}</span>
+            </div>
+            <button mat-icon-button matDialogClose>
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+    </mat-toolbar>
+    <worker-identity-document-form (formStatusChanged)="identityDocumentChanged($event)"
+                                   [value]="identityDocument"></worker-identity-document-form>
+
+    <div class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center" mat-dialog-actions>
+        <button (click)="saveIdentityDocument()"
+                *ngIf="identityDocumentform"
+                [disabled]="!isIdentityDocumentFormValid"
+                aria-label="SAVE"
+                class="save-button"
+                mat-raised-button>
+            {{'shared.button.save' | translate | uppercase}}
+        </button>
+
+    </div>
+</div>

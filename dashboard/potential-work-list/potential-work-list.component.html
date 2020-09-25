@@ -1,0 +1,17 @@
+<div *ngIf="works.length === 0" fxFlex fxLayout="column" fxLayoutAlign="center center">
+    <mat-icon [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}"
+              class="s-64 mb-8  mt-16 select-message-icon hint-text">
+        work_off
+    </mat-icon>
+    <span [@animate]="{value:'*',params:{delay:'400ms'}}" class="select-message-text hint-text mb-16">
+        <span>{{'potential-work.list.notFound' | translate}}</span>
+    </span>
+</div>
+
+
+<div [@animateStagger]="{value:'50'}" class="work-list">
+    <worker-potential-work-list-item *ngFor="let work of works | orderBy: 'createdDate' : true"
+                                     [@animate]="{value:'*',params:{y:'100%'}}"
+                                     [work]="work">
+    </worker-potential-work-list-item>
+</div>

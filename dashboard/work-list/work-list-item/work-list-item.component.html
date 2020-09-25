@@ -1,0 +1,61 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+
+    <div class="info" fxFlex fxLayout="column">
+
+        <div class="row-1" fxLayout="row" fxLayoutAlign="start center">
+
+            <div class="title" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                <span class="text-truncate"> {{work.title }}</span>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <div class="time"> {{'work-list.item.messages.published' | translate}} {{work.createdDate | dynamicMoment | amCalendar }}</div>
+            </div>
+
+        </div>
+
+
+        <div class="row-1" fxLayout="row" fxLayoutAlign="start center">
+            <div class="name" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                <img *ngIf="work.createdBy.image" [src]="work.createdBy.image" class="avatar"/>
+                <img *ngIf="!work.createdBy.image" [src]="'assets/images/avatars/profile.jpg'" class="avatar"/>
+                <span
+                    class=" message text-truncate">pour: {{work.createdBy.firstName}} {{work.createdBy.lastName}}</span>
+            </div>
+        </div>
+
+        <div class="row-2" fxLayout="row" fxLayoutAlign="start center">
+
+            <div fxLayout="column" fxLayoutAlign="start start">
+                <div class="message text-truncate">
+                    <div class="line-height-1.75">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="mr-4">location_on</mat-icon>
+                            {{work.address.postalCode}}
+                            <mat-icon class="ml-16 mr-4">event</mat-icon>
+                            {{work.date | dynamicMoment | amCalendar  }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="info" fxFlex fxLayout="column">
+                <div fxLayout="row wrap" fxLayoutAlign="start center">
+                    <work-status [offeredWorkContract]="offeredWorkContract" [work]="work"></work-status>
+                </div>
+
+            </div>
+
+            <div class="actions" fxLayout="row" fxLayoutAlign="start center">
+                <button (click)="navigateToWorkDetails()" color="accent" mat-raised-button>{{'work-list.item.messages.service' | translate}}</button>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,190 @@
+<div id="main">
+    <header-v1></header-v1>
+    <div class="page-layout simple left-sidebar inner-scroll" id="academy-course">
+        <div class="center">
+            <div class="subtitle" fxLayout="row" fxLayoutAlign="center center">
+                <div>
+                </div>
+            </div>
+
+            <div class="content">
+                <ng-container *ngFor="let step of completeProfileSteps.asArray(); let i = index;">
+                    <div *ngIf="currentStepIndex === i" [@slideIn]="animationDirection" class="course-step"
+                        fusePerfectScrollbar>
+                        <div class="course-step-content" id="course-step-content">
+                            <div class="p-16">
+                                <h1> {{'worker-complete-profile.subtitle' | translate}}</h1>
+                            </div>
+                            <div class="p-16" fxLayout="row" fxLayoutAlign="start start">
+                                <span class="text">{{ 'register.actions.haveAlreadyAccount' | translate }}</span>
+                                <div style="width: 4px;"></div>
+                                <a (click)="navigateToLoginPage()"
+                                    class="link">{{ 'register.actions.login' | translate }}</a>
+                            </div>
+                            <form [formGroup]="form" fxLayout="column" novalidate>
+                                <div fxLayout="row" fxLayoutAlign="space-around start">
+                                    <mat-form-field appearance="outline" fxFlex="46">
+                                        <mat-label>{{ 'register.form.firstName' | translate }}</mat-label>
+                                        <input formControlName="firstName" matInput>
+                                        <mat-icon class="secondary-text" matSuffix>account_circle</mat-icon>
+                                        <mat-error *ngIf="form.get('firstName').hasError('required')">
+                                            {{ 'register.messages.error.firstName.required' | translate }}
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('firstName').hasError('minlength')">
+                                            {{ 'register.messages.error.firstName.minlength' | translate: {'length': 2} }}
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('firstName').hasError('maxlength')">
+                                            {{ 'register.messages.error.firstName.maxlength' | translate: {'length': 50} }}
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="46">
+                                        <mat-label>{{ 'register.form.lastName' | translate }}</mat-label>
+                                        <input formControlName="lastName" matInput>
+                                        <mat-icon class="secondary-text" matSuffix>account_circle</mat-icon>
+                                        <mat-error *ngIf="form.get('lastName').hasError('required')">
+                                            {{ 'register.messages.error.lastName.required' | translate }}
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('lastName').hasError('minlength')">
+                                            {{ 'register.messages.error.lastName.minlength' | translate: {'length': 2} }}
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('lastName').hasError('maxlength')">
+                                            {{ 'register.messages.error.lastName.maxlength' | translate: {'length': 50} }}
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div fxLayout="row" fxLayoutAlign="space-around start">
+                                    <mat-form-field appearance="outline" fxFlex="46">
+                                        <mat-label>{{ 'register.form.email' | translate }}</mat-label>
+                                        <input formControlName="email" matInput>
+                                        <mat-icon class="secondary-text" matSuffix>mail</mat-icon>
+                                        <mat-error *ngIf="form.get('email').hasError('required')">
+                                            {{ 'register.messages.error.email.required' | translate }}
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('email').hasError('email')">
+                                            {{ 'register.messages.error.email.invalid' | translate }}
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('email').hasError('alreadyUsed')">
+                                            {{ 'register.messages.error.email.alreadyUsed' | translate }}
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="outline" fxFlex="46">
+                                        <mat-label>{{ 'personal-information.form.phone' | translate }}</mat-label>
+                                        <input formControlName="phone" mask="(000)000-0000" matInput prefix="+1 ">
+                                        <mat-icon class="secondary-text" matSuffix>phone</mat-icon>
+                                        <mat-error *ngIf="form.get('phone').hasError('required')">
+                                            {{ 'personal-information.messages.error.phone.required' | translate }}
+                                        </mat-error>
+                                        <mat-error *ngIf="!form.get('phone').hasError('required') &&
+                                                    form.get('phone').hasError('invalidCountryPhone')">
+                                            {{ 'personal-information.messages.error.phone.notValid' | translate }}
+                                        </mat-error>
+                                        <mat-error *ngIf="form.get('phone').hasError('alreadyUsed')">
+                                            {{ 'register.messages.error.phone.alreadyUsed' | translate }}
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="space-around start">
+                                    <mat-form-field appearance="outline" class="mb-16" fxFlex="46"
+                                        hintLabel="yyyy-MM-dd">
+                                        <mat-label> {{'personal-information.form.birthday' | translate}}</mat-label>
+                                        <input (click)="birthdayDatePicker.open()" [matDatepicker]="birthdayDatePicker"
+                                            [max]="maxBirthday" [min]="minBirthday" formControlName="birthday" matInput>
+                                        <mat-datepicker-toggle [for]="birthdayDatePicker" matSuffix>
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #birthdayDatePicker></mat-datepicker>
+                                        <mat-error *ngIf="form.get('birthday').hasError('required')">
+                                            {{ 'personal-information.messages.error.birthday.required' | translate }}
+                                        </mat-error>
+                                    </mat-form-field>
+
+                                    <mat-form-field style="height: 50px;" appearance="outline" fxFlex="46">
+                                        <mat-label>{{'personal-information.form.gender' | translate}}</mat-label>
+                                        <mat-select class="sexe" [compareWith]="compareByCode" formControlName="gender">
+                                            <mat-option *ngFor="let gender of genders" [value]="gender">
+                                                {{gender.label}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="form.get('gender').hasError('required')">
+                                            {{ 'personal-information.messages.error.gender.required' | translate }}
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                            </form>
+                            <div class="p-16">
+                                <div class="h2 font-weight-300">
+                                    <B>{{'worker-complete-profile.professionel' | translate}}</B></div>
+                            </div>
+                            <worker-professional-information-form
+                                (formStatusChanged)="professionalInformationChanged($event)"
+                                *ngIf="currentStepIndex === 0"
+                                [value]="completeProfileSteps.professionalInformationStep.data">
+                            </worker-professional-information-form>
+                            <div class="p-16">
+                                <div class="h2 font-weight-300">
+                                    <B>{{'worker-complete-profile.services' | translate}}</B></div>
+                            </div>
+
+
+                            <!--  <worker-identity-document-form (formStatusChanged)="identityDocumentChanged($event)"
+                                                         *ngIf="currentStepIndex === 2"
+                                                         [value]="completeProfileSteps.identityDocumentStep.data">
+                          </worker-identity-document-form>!-->
+
+
+                            <form [formGroup]="formService" fxLayout="column" fxLayoutAlign="space-around start"
+                                novalidate>
+                                <div> <B>{{'worker-complete-profile.select-more-service'| translate}}</B></div>
+                                <div class="mini-space"></div>
+                                <div fxLayout="column" fxLayoutAlign="space-around start"
+                                    *ngFor="let item of workTypes | orderBy: 'orderWorkType': true">
+                                    <mat-checkbox [value]="item" (change)="toggle($event)">{{item.label}}</mat-checkbox>
+                                    <div class="mini-space"></div>
+                                </div>
+
+                                <div style="height: 15px;"></div>
+
+                                <div *ngIf="false" fxLayout="row" fxLayoutAlign="start start">
+                                    <mat-form-field appearance="outline" fxFlex>
+                                        <mat-label>{{'components.worker-service-form.formation' | translate}}
+                                        </mat-label>
+                                        <mat-select [compareWith]="compareByCode" formControlName="training">
+                                            <mat-option *ngFor="let trainingType of trainingTypes"
+                                                [value]="trainingType">
+                                                {{trainingType.label}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                                <div *ngIf="false" fxLayout="row" fxLayoutAlign="start start">
+                                    <mat-form-field appearance="outline" fxFlex>
+                                        <mat-label>{{'components.worker-service-form.furnitures' | translate}}
+                                        </mat-label>
+                                        <mat-select [compareWith]="compareByCode" formControlName="equipment">
+                                            <mat-option *ngFor="let equipmentType of equipmentTypes"
+                                                [value]="equipmentType">
+                                                {{equipmentType.label}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+
+                            </form>
+
+                            <button (click)="saveProfile()" class="done green-600" mat-button>
+                                {{'client-complete-profile.title' | translate}}
+                            </button>
+
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+    </div>
+</div>

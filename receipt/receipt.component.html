@@ -1,0 +1,41 @@
+<div class="page-layout simple left-sidebar inner-sidebar inner-scroll" id="contacts">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayout.gt-xs="row"
+         fxLayoutAlign="start" fxLayoutAlign.gt-xs="space-between center">
+
+        <!-- APP TITLE -->
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="logo" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}"
+                          class="logo-icon mr-16">list_alt
+                </mat-icon>
+                <span [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}" class="logo-text h1">
+                  {{'receipt-service.title' | translate}}
+                </span>
+            </div>
+
+        </div>
+        <!-- / APP TITLE -->
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- CENTER -->
+        <div class="center p-24 pb-56" fusePerfectScrollbar>
+
+            <!-- CONTENT -->
+            <div class="content">
+                <receipt-list></receipt-list>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CENTER -->
+
+    </div>
+    <!-- / CONTENT-->
+
+</div>

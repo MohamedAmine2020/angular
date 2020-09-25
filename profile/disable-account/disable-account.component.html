@@ -1,0 +1,20 @@
+<fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxFlex="100" fxLayout="row">
+    <!-- Front -->
+    <div class="fuse-widget-front">
+
+        <div class="p-16">
+            <mat-slide-toggle (change)="updateDisabled($event)"
+                              aria-label="Désactiver pour qu'il ne reçoit plus des proposition de job"
+                              class="mr-24"
+                              labelPosition="before" name="hasEligibilityToTax">
+                {{'worker-profile.disable-account.disable'| translate}}
+            </mat-slide-toggle>
+
+
+        </div>
+
+
+    </div>
+
+
+</fuse-widget>

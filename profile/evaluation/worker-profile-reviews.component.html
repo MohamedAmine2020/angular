@@ -1,0 +1,18 @@
+<fuse-widget [@animate]="{value:'*',params:{y:'100%'}}" class="widget" fxFlex="100" fxLayout="row">
+    <!-- Front -->
+    <div class="fuse-widget-front">
+        <div class="px-16 border-bottom" fxLayout="row" fxLayoutAlign="start center">
+            <div class="py-16 h3" fxFlex>
+              {{'worker-profile.reviews.title' | translate}}
+            </div>
+            <star-rating [rating]="reviewSummary.ratingAvg" [starType]="'icon'" readOnly="true"
+                         staticColor="ok"></star-rating>
+        </div>
+
+        <div class="p-16 ">
+            <review-summary [reviewSummary]="reviewSummary"></review-summary>
+        </div>
+
+    </div>
+
+</fuse-widget>

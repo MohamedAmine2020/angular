@@ -1,0 +1,69 @@
+<div class="page-layout simple" id="academy-courses">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text">
+            <mat-icon class="hero-icon">work_outline</mat-icon>
+            <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+              {{'worker-potentials-works.messages.message-1' | translate}}
+            </h1>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div fxLayout="column" fxLayoutAlign="center">
+
+            <div class="filters" fxLayout="column" fxLayout.gt-xs="row"
+                 fxLayoutAlign="center center" fxLayoutAlign.gt-xs="space-between center">
+
+                <mat-form-field appearance="outline" class="course-search" floatLabel="always">
+                    <mat-label>{{'worker-potentials-works.messages.title' | translate}}</mat-label>
+                    <input (input)="filterWorksByTerm()" [(ngModel)]="searchTerm"
+                           matInput>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="category-selector">
+                    <mat-label>{{'worker-potentials-works.messages.category' | translate}}</mat-label>
+                    <mat-select (selectionChange)="filterWorksByType()"
+                                [(ngModel)]="currentWorkType">
+                        <mat-option [value]="'all'">
+                           {{'worker-potentials-works.messages.all' | translate}}
+                        </mat-option>
+                        <mat-option *ngFor="let workType of workTypes" [value]="workType.code">
+                            {{ workType.label }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+            <div [@animateStagger]="{value:'50'}" class="courses" fxLayout="row wrap" fxLayoutAlign="center">
+                <div *ngFor="let work of filteredWorks" [@animate]="{value:'*',params:{y:'100%'}}" class="course"
+                     fxFlex="100"
+                     fxFlex.gt-sm="33" fxFlex.gt-xs="50">
+
+
+                    <work-box
+                        (acceptButtonClick)="navigateToWorkDetails($event)"
+                        [work]="work"
+                        acceptButtonTitle="Voir le job">
+                    </work-box>
+
+
+                    <div *ngIf="filteredWorks.length === 0" class="no-courses">
+                   {{'worker-potentials-works.messages.notFound' | translate}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,157 @@
+@import "src/@fuse/scss/fuse";
+@import "~css-star-rating/scss/star-rating";
+
+worker-profile {
+
+    #worker-profile {
+        width: 100%;
+
+
+        .header {
+            height: 320px;
+            min-height: 320px;
+            max-height: 320px;
+            background: url('/assets/images/backgrounds/blurry-bg2.jpg') no-repeat 0 45%;
+            background-size: cover;
+
+            .profile-image {
+                margin-right: 24px;
+
+                @include media-breakpoint('sm') {
+                    margin: 0 0 16px 0;
+                }
+            }
+
+            .name {
+                font-size: 34px;
+                color: #FFFFFF;
+
+                @include media-breakpoint('sm') {
+                    margin-bottom: 32px;
+                }
+            }
+
+            .actions {
+
+                button {
+                    text-transform: none;
+                    padding: 0 16px;
+                    margin: 0 0 0 8px;
+                }
+            }
+        }
+
+        .about-content {
+
+            .general {
+
+                .location {
+
+                    mat-icon {
+                        line-height: 13px !important;
+                    }
+                }
+            }
+
+            .work {
+
+                .job {
+
+                    .company {
+                        padding: 0 16px 0 0;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+        .about-sidebar {
+
+            @include media-breakpoint('sm') {
+                padding: 8px
+            }
+
+            .friends {
+
+                .content {
+
+                    .friend {
+                        padding: 4px;
+
+                        img {
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+
+            .groups {
+
+                .content {
+
+                    .group {
+                        margin-bottom: 24px;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        .logo {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 48px;
+                            height: 48px;
+                            font-size: 21px;
+                            line-height: normal;
+                            border-radius: 50%;
+                            margin-right: 16px;
+                        }
+
+                        .name {
+                            font-weight: 600;
+                            font-size: 15px;
+                        }
+
+                        .members {
+                            margin-top: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .services-wrapper {
+            border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+            .service-label {
+                padding: 24px 12px 12px 12px;
+                font-size: 18px;
+                font-weight: 300;
+            }
+
+            .services {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: flex-start;
+
+
+                .service-card {
+                    display: flex;
+                    align-items: flex-start;
+                    padding: 12px 12px 24px 12px;
+
+                    display: flex;
+                    min-width: 320px;
+
+                }
+            }
+
+        }
+
+    }
+
+
+}
